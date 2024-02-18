@@ -73,7 +73,46 @@ const NextQuestion = () => {
 </script>
 
 <template>
-  <h1>Hello world</h1>
+  <main class="app">
+    <h1>The Quiz</h1>
+
+    <section class="quiz">
+      <div class="quiz-info">
+        <span class="question">
+          {{ getCurrentQuestion.question }}
+        </span>
+        <span class="store">Store {{ score }} / {{ questions.length }}</span>  
+      </div>
+
+      <div class="options">
+        <label for="(option, index) in getCurrentQuestion.options"
+         :key="index" 
+         :class="`option ${
+          getCurrentQuestion.selected == index
+            ? index == getCurrentQuestion.answer
+              ? 'correct'
+              : 'wrong'
+            : ''
+          
+         } ${
+            getCurrentQuestion.selected != null &&
+            index !=getCurrentQuestion.selected
+              ? 'disabled'
+              : ''
+
+         }`">
+
+
+          <input type="radio" 
+            name="getCurrentQuestion.index"
+            value="index"
+            v-model="getCurrentQuestion.selected"
+            :disabled="getCurrentQuestion.selected"
+            @change="SetAnswer">
+        </label>
+      </div>
+    </section>
+  </main>
 </template>
 
 <style scoped>
