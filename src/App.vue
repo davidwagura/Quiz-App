@@ -109,6 +109,7 @@ const NextQuestion = () => {
             v-model="getCurrentQuestion.selected"
             :disabled="getCurrentQuestion.selected"
             @change="SetAnswer">
+            <span>{{ options }}</span>
         </label>
       </div>
     </section>
