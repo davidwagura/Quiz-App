@@ -150,6 +150,92 @@ const NextQuestion = () => {
     flex-direction: column;
     align-items: center;
     padding: 2rem;
-    
+    min-height: 100vh;
+  }
+
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .quiz {
+    background-color: purple;
+    padding: 1rem;
+    width: 100%;
+    max-width: 640px;
+    border-radius: 0.5rem;
+  }
+
+  .quiz-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+  }
+
+  .quiz-info .question {
+    color: gray;
+    font-size: 1.25rem;
+  }
+
+  .quiz-info .score {
+    color: white;
+    font-size: 1.25rem;
+  }
+  .options {
+    margin: 1rem;
+  }
+  .option {
+    display: block;
+    padding: 1rem;
+    background-color: #271C36;
+    margin-bottom: 0.5rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+  }
+  .option.hover {
+    background-color: #2d213f;
+  }
+  .option.correct {
+    background-color: #2cce7d;
+  }
+  .option.wrong {
+    background-color: #ff5a5f;
+  }
+  .option:last-of-type {
+    margin-bottom: 0;
+  }
+  .option.disabled {
+    opacity: 0.5;
+  }
+  .option input {
+    display: none;
+  }
+
+  button {
+    appearance: none;
+    outline: none;
+    border: none;
+    cursor: pointer;
+
+    padding: 0.5rem 1rem;
+    background-color: green;
+    color: #2d213f;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 1.25rem;
+    border-radius: 0.5rem;
+  }
+  button:disabled {
+    opacity: 0.5;
+  }
+  h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+  p {
+    color: #afafaf;
+    font-size: 1.25rem;
+    text-align: center;
   }
 </style>
