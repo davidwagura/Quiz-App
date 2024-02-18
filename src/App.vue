@@ -76,7 +76,7 @@ const NextQuestion = () => {
   <main class="app">
     <h1>The Quiz</h1>
 
-    <section class="quiz">
+    <section class="quiz" v-if="!quizCompleted">
       <div class="quiz-info">
         <span class="question">
           {{ getCurrentQuestion.question }}
@@ -112,6 +112,24 @@ const NextQuestion = () => {
             <span>{{ options }}</span>
         </label>
       </div>
+
+      <button
+      @click="NextQuestion"
+      :disabled="!getCurrentQuestion.selected">
+      {{ 
+        getCurrentQuestion.index == question.length - 1
+          ? 'Finish'
+          :getCurrentQuestion.selected == null
+          ? 'select an option'
+          : 'Next Question'
+      }}
+
+      </button>
+
+    </section>
+    <section v-else>
+      <h2>You have finished the quiz</h2>
+      <p>Your score is {{ score }} / {{ question.length }}</p>
     </section>
   </main>
 </template>
@@ -126,5 +144,12 @@ const NextQuestion = () => {
   body {
     background-color: rgb(50, 1, 50);
     color: #FFF;
+  }
+  .app {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    
   }
 </style>
