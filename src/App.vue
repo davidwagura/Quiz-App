@@ -85,9 +85,9 @@ const NextQuestion = () => {
       </div>
 
       <div class="options">
-        <label for="(option, index) in getCurrentQuestion.options"
-         :key="index" 
-         :class="`option ${
+        <label v-for="(options, index) in getCurrentQuestion.options"
+         :key= "index" 
+         :class="`options ${
           getCurrentQuestion.selected == index
             ? index == getCurrentQuestion.answer
               ? 'correct'
@@ -109,7 +109,7 @@ const NextQuestion = () => {
             v-model="getCurrentQuestion.selected"
             :disabled="getCurrentQuestion.selected"
             @change="SetAnswer">
-            <span>{{ options }}</span>
+            <span v-for="(options, index) in getCurrentQuestion.options"> {{ options }} </span>
         </label>
       </div>
 
@@ -117,7 +117,7 @@ const NextQuestion = () => {
       @click="NextQuestion"
       :disabled="!getCurrentQuestion.selected">
       {{ 
-        getCurrentQuestion.index == question.length - 1
+        getCurrentQuestion.index == questions.length - 1
           ? 'Finish'
           :getCurrentQuestion.selected == null
           ? 'select an option'
@@ -129,7 +129,7 @@ const NextQuestion = () => {
     </section>
     <section v-else>
       <h2>You have finished the quiz</h2>
-      <p>Your score is {{ score }} / {{ question.length }}</p>
+      <p>Your score is {{ score }} / {{ questions.length }}</p>
     </section>
   </main>
 </template>
@@ -140,6 +140,9 @@ const NextQuestion = () => {
     padding: 0;
     box-sizing: border-box;
     font-family: 'montserat', sans-serif;
+    color: white;
+    text-align: center;
+    padding-bottom: 6rem;
   }
   body {
     background-color: rgb(50, 1, 50);
@@ -159,7 +162,7 @@ const NextQuestion = () => {
   }
 
   .quiz {
-    background-color: purple;
+    background-color: #2d213f;
     padding: 1rem;
     width: 100%;
     max-width: 640px;
@@ -169,11 +172,10 @@ const NextQuestion = () => {
   .quiz-info {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 1rem;
   }
 
   .quiz-info .question {
-    color: gray;
+    color: white;
     font-size: 1.25rem;
   }
 
@@ -184,7 +186,7 @@ const NextQuestion = () => {
   .options {
     margin: 1rem;
   }
-  .option {
+  .options {
     display: block;
     padding: 1rem;
     background-color: #271C36;
@@ -237,5 +239,10 @@ const NextQuestion = () => {
     color: #afafaf;
     font-size: 1.25rem;
     text-align: center;
+  }
+  h1 {
+    margin-top: 30px;
+    color: #271C36;
+    margin-bottom: -2rem;
   }
 </style>
